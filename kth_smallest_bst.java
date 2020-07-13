@@ -41,4 +41,31 @@ class Solution {
             inOrderTree(root.right, array);
         }
     }
+    
+    /*
+    // Iterative using a Stack
+    
+    public int kthSmallest(TreeNode root, int k) {
+    
+        Stack<TreeNode> elements = new Stack<TreeNode>();
+        int counter = 0;
+        
+        while(true){
+            while(root !=null){
+                elements.push(root);
+                root = root.left;
+            }
+            
+            root = elements.pop();
+            //System.out.println(root.val);
+            counter++;
+            
+            if(counter == k){
+                return root.val;
+            }
+            root = root.right;
+        }
+    }
+    
+    */
 }
