@@ -1,5 +1,6 @@
 # merge in between lists
 # https://leetcode.com/problems/merge-in-between-linked-lists/
+# time O(n), space O(1)
 
 # Definition for singly-linked list.
 class ListNode:
@@ -20,10 +21,12 @@ class Solution:
 		prev = None
 		curr = list1
 		head = curr
+		index = 0;
 
-		while curr.next and curr.val != a:
+		while curr.next and index < a:
 			prev = curr
 			curr = curr.next
+			index += 1
 			
 		list1Pointer = prev.next
 		prev.next = list2
@@ -33,9 +36,10 @@ class Solution:
 			prev = curr
 			curr = curr.next
 
-		while list1Pointer.next and list1Pointer.val != b:
+		while list1Pointer.next and index < b:
 			list1Pointer = list1Pointer.next
-				
+			index += 1
+		
 		curr.next = list1Pointer.next
 		return head
 
@@ -44,4 +48,5 @@ list1 = ListNode(0, ListNode(1, ListNode(2, ListNode(3, ListNode(4,ListNode(5,No
 a = 3
 b = 4
 list2 = ListNode(1000000,ListNode(1000001,ListNode(1000002,None)))
-sol.mergeInBetween(list1,a,b,list2)
+result = sol.mergeInBetween(list1,a,b,list2)
+result.printVals()
